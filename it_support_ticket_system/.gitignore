@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Upload files
+uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Docker
+*.pid
+*.sock
+
+# Build / cache
+dist/
+build/
+.cache/
+
+# Temp files
+tmp/
+temp/
