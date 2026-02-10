@@ -1,0 +1,107 @@
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        border: none;
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .form-control,
+    textarea {
+        border-radius: 12px;
+        border: 2px solid #e2e8f0;
+        padding: 1rem;
+    }
+
+    .form-control:focus,
+    textarea:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+
+    .btn-success {
+        border-radius: 12px;
+        font-weight: 600;
+        padding: 0.75rem 2rem;
+    }
+
+    .badge-custom {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
+
+    .status-open {
+        background: #c6f6d5;
+        color: #22543d;
+    }
+
+    .status-in-progress {
+        background: #fed7d7;
+        color: #742a2a;
+    }
+
+    .status-closed {
+        background: #e2e8f0;
+        color: #4a5568;
+    }
+
+    .priority-low {
+        background: #c6f6d5;
+        color: #22543d;
+    }
+
+    .priority-medium {
+        background: #fefcbf;
+        color: #744210;
+    }
+
+    .priority-high {
+        background: #fed7d7;
+        color: #742a2a;
+    }
+
+    .comment-item {
+        background: #f8f9fa;
+        border-radius: 16px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .comment-user {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .comment-time {
+        font-size: 0.8rem;
+        color: #718096;
+        margin-bottom: 0.5rem;
+    }
+
+    .comment-message {
+        margin: 0;
+        white-space: pre-wrap;
+    }
+
+    .char-counter {
+        font-size: 0.8rem;
+        color: #6c757d;
+        text-align: right;
+        margin-top: 0.25rem;
+    }
+

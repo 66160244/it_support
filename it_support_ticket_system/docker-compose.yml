@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: it_support_ticket_system
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app          # bind mount โค้ดทั้งหมด
+      - /usr/src/app/node_modules  # ป้องกัน node_modules ทับจาก host
+      - ./uploads:/usr/src/app/uploads
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=it_support_ticket_system
+      - DB_PORT=3306
+    command: npx nodemon --legacy-watch server.js  # เพิ่มบรรทัดนี้เพื่อให้ nodemon ทำงานแทน node
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: it_support_ticket_system
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadminticket
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:

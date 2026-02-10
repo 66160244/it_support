@@ -1,0 +1,62 @@
+const pool = require("../config/database");
+
+const UserModel = {
+  // 🧩 CREATE — สร้างผู้ใช้ใหม่
+  async create({ username, email, password, role }) {
+    const [result] = await pool.query(
+      "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)",
+      [username, email, password, role]
+    );
+    return result.insertId;
+  },
+
+  // 🔍 READ — ค้นหาผู้ใช้ด้วย username
+  async findByUsername(username) {
+    const [rows] = await pool.query("SELECT * FROM users WHERE username = ?", [username]);
+    return rows[0];
+  },
+
+  // 🔍 READ — ค้นหาผู้ใช้ด้วย email
+  async findByEmail(email) {
+    const [rows] = await pool.query("SELECT * FROM users WHERE email = ?", [email]);
+    return rows[0];
+  },
+
+  // 🔍 READ — ค้นหาผู้ใช้ด้วย id
+  async findById(id) {
+    const [rows] = await pool.query("SELECT id, username, email, role FROM users WHERE id = ?", [id]);
+    return rows[0];
+  },
+
+  // 📜 READ — ดึงผู้ใช้ทั้งหมด
+  async findAll() {
+    const [rows] = await pool.query("SELECT id, username, email, role FROM users");
+    return rows;
+  },
+
+  // ✏️ UPDATE — อัปเดตข้อมูลผู้ใช้ (ไม่รวมรหัสผ่าน)
+  async updateUser(id, { username, email, role }) {
+    const [result] = await pool.query(
+      "UPDATE users SET username = ?, email = ?, role = ? WHERE id = ?",
+      [username, email, role, id]
+    );
+    return result.affectedRows > 0;
+  },
+
+  // 🔑 UPDATE — เปลี่ยนรหัสผ่านใหม่
+  async updatePassword(id, hashedPassword) {
+    const [result] = await pool.query(
+      "UPDATE users SET password = ? WHERE id = ?",
+      [hashedPassword, id]
+    );
+    return result.affectedRows > 0;
+  },
+
+  // ❌ DELETE — ลบผู้ใช้
+  async deleteUser(id) {
+    const [result] = await pool.query("DELETE FROM users WHERE id = ?", [id]);
+    return result.affectedRows > 0;
+  }
+};
+
+module.exports = UserModel;

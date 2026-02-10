@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แดชบอร์ด - ระบบช่วยเหลือด้านไอที</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+    <!-- แถบเมนูด้านข้าง -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h4><i class="bi bi-headset me-2"></i>ระบบช่วยเหลือด้านไอที</h4>
+        </div>
+
+        <div class="sidebar-nav">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="mytickets.html">
+                        <i class="bi bi-ticket-perforated"></i> ตั๋วของฉัน
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="bi bi-bar-chart"></i> แดชบอร์ด
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="create-ticket.html">
+                        <i class="bi bi-plus-circle"></i> สร้างตั๋วใหม่
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="bi bi-person"></i>
+                </div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">ผู้ใช้งาน</div>
+                    <div class="user-role" id="userRole">สมาชิก</div>
+                </div>
+            </div>
+            <button id="logoutBtn" class="btn btn-sm btn-outline-light w-100 mt-3">
+                <i class="bi bi-box-arrow-right me-1"></i> ออกจากระบบ
+            </button>
+        </div>
+    </div>
+
+    <!-- เนื้อหาหลัก -->
+    <div class="main-content">
+        <!-- ส่วนหัว -->
+        <div class="dashboard-header">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="text-primary"><i class="bi bi-speedometer2 me-2"></i>แดชบอร์ด</h2>
+                    <p class="text-muted mb-0">จัดการและติดตามตั๋วการสนับสนุนทั้งหมดในระบบ</p>
+                </div>
+                <!-- ปุ่มสร้างตั๋วถูกลบออก -->
+            </div>
+
+            <!-- สถิติภาพรวม -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card-stat card-open">
+                        <div class="d-flex align-items-center">
+                            <div class="stat-icon me-3">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div>
+                                <div class="stat-label">เปิดอยู่</div>
+                                <div class="stat-value" id="countOpen">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-stat card-inprogress">
+                        <div class="d-flex align-items-center">
+                            <div class="stat-icon me-3">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                            <div>
+                                <div class="stat-label">กำลังดำเนินการ</div>
+                                <div class="stat-value" id="countInProgress">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card-stat card-resolved">
+                        <div class="d-flex align-items-center">
+                            <div class="stat-icon me-3">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div>
+                                <div class="stat-label">แก้ไขแล้ว</div>
+                                <div class="stat-value" id="countResolved">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-3">
+                    <div class="card-stat card-active">
+                        <div class="d-flex align-items-center">
+                            <div class="stat-icon me-3">
+                                <i class="bi bi-list-task"></i>
+                            </div>
+                            <div>
+                                <div class="stat-label">ตั๋วที่ใช้งานอยู่</div>
+                                <div class="stat-value" id="countActive">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-4">
+                    <div class="card-stat card-closed">
+                        <div class="d-flex align-items-center">
+                            <div class="stat-icon me-3">
+                                <i class="bi bi-inbox"></i>
+                            </div>
+                            <div>
+                                <div class="stat-label">ปิดแล้วทั้งหมด</div>
+                                <div class="stat-value" id="countClose">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-4">
+                    <div class="card-stat card-total">
+                        <div class="d-flex align-items-center">
+                            <div class="stat-icon me-3">
+                                <i class="bi bi-inbox"></i>
+                            </div>
+                            <div>
+                                <div class="stat-label">ตั๋วทั้งหมด</div>
+                                <div class="stat-value" id="countTotal">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ส่วนกรองข้อมูล -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold text-dark">กรองตามสถานะ</label>
+                        <select class="form-select border-primary" id="statusFilter">
+                            <option value="all">ทุกสถานะ</option>
+                            <option value="open">เปิดอยู่</option>
+                            <option value="in_progress">กำลังดำเนินการ</option>
+                            <option value="resolved">แก้ไขแล้ว</option>
+                            <option value="closed">ปิดแล้ว</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold text-dark">กรองตามระดับความสำคัญ</label>
+                        <select class="form-select border-warning" id="priorityFilter">
+                            <option value="all">ทุกระดับ</option>
+                            <option value="high">สูง</option>
+                            <option value="medium">ปานกลาง</option>
+                            <option value="low">ต่ำ</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold text-dark">ค้นหาตั๋ว</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control border-secondary" id="searchInput"
+                                placeholder="ค้นหาด้วยหัวข้อ รายละเอียด หรือหมายเลขตั๋ว...">
+                            <button class="btn btn-secondary" type="button" id="searchBtn">
+                                <i class="bi bi-search"></i> ค้นหา
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-danger w-100" type="button" id="resetBtn">
+                            <i class="bi bi-arrow-clockwise"></i> รีเซ็ต
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- รายการตั๋ว -->
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-list-ul me-2"></i>รายการตั๋วทั้งหมด</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>หมายเลขตั๋ว</th>
+                                <th>หัวข้อ</th>
+                                <th>สถานะ</th>
+                                <th>ระดับความสำคัญ</th>
+                                <th>ผู้รับผิดชอบ</th>
+                                <th>ผู้สร้าง</th>
+                                <th>วันที่สร้าง</th>
+                                <th>การจัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ticketTableBody">
+                            <!-- ตารางตั๋วจะโหลดที่นี่ -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+
+</html>

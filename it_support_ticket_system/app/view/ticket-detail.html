@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดตั๋ว - ระบบช่วยเหลือด้านไอที</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ticket-detail.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow-lg border-0 p-4 rounded-4">
+                    <h2 class="fw-bold text-center mb-4 gradient-text">
+                        <i class="fas fa-ticket-alt me-2"></i>รายละเอียดตั๋ว
+                    </h2>
+
+                    <!-- Ticket Info -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">หัวข้อ</label>
+                        <input type="text" class="form-control" id="ticketSubject" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">รายละเอียด</label>
+                        <textarea class="form-control" id="ticketDescription" rows="4" readonly></textarea>
+                    </div>
+                    <div class="mb-4" id="ticketImageBox" style="display: none;">
+                        <label class="form-label fw-semibold">รูปประกอบ</label>
+                        <div class="text-center">
+                            <img id="ticketImage"
+                                src=""
+                                class="img-fluid rounded shadow-sm"
+                                style="max-height: 400px;"
+                                alt="Ticket Image">
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">สถานะ</label>
+                            <input type="text" class="form-control" id="ticketStatus" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">ระดับความสำคัญ</label>
+                            <input type="text" class="form-control" id="ticketPriority" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">ผู้รับผิดชอบ</label>
+                            <input type="text" class="form-control" id="ticketAssigned" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <h5 class="gradient-text mb-3">
+                        <i class="fas fa-comments me-2"></i>ความคิดเห็น
+                    </h5>
+                    <div id="commentsList" class="mb-3"></div>
+
+                    <!-- Add Comment -->
+                    <div class="mt-3">
+                        <form id="addCommentForm">
+                            <textarea class="form-control mb-2" id="commentMessage" rows="3"
+                                placeholder="พิมพ์ความคิดเห็นของคุณ..." maxlength="500" required></textarea>
+                            <div class="text-end small text-muted">
+                                <span id="commentCounter"></span>
+                            </div>
+                            <div class="d-flex justify-content-between mt-3">
+                                <!-- ปุ่มกลับ -->
+                                <a href="mytickets.html" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>กลับไปหน้าตั๋วของฉัน
+                                </a>
+
+                                <!-- ปุ่มส่งความคิดเห็น -->
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-paper-plane me-2"></i>ส่งความคิดเห็น
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/ticket-detail.js"></script>
+</body>
+
+</html>
